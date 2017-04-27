@@ -13,6 +13,7 @@ type env = Scope.t list
 type t
 type metadata = {
   checked: bool;
+  ignore_type_in_value_position: bool;
   enable_const_params: bool;
   enable_unsafe_getters_and_setters: bool;
   enforce_strict_type_args: bool;
@@ -46,6 +47,7 @@ val metadata_of_options: Options.t -> metadata
 val all_unresolved: t -> Type.TypeSet.t IMap.t
 val annot_table: t -> (Loc.t, Type.t) Hashtbl.t
 val declare_module_t: t -> Type.t option
+val ignore_type_in_value_position: t -> bool
 val enable_const_params: t -> bool
 val enable_unsafe_getters_and_setters: t -> bool
 val enforce_strict_type_args: t -> bool

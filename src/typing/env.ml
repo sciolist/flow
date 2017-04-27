@@ -712,6 +712,9 @@ let read_entry ~track_ref ~lookup_mode ~specific cx name ?desc loc =
     (Entry.entry_loc entry) loc;
   Entry.(match entry with
 
+  | Type t when Context.should_ignore_type_in_value_position cx ->
+    t._type
+
   | Type _ when lookup_mode != ForType ->
     let msg = FlowError.ETypeInValuePosition in
     binding_error msg cx name entry loc;

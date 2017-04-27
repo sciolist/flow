@@ -52,6 +52,7 @@ module Opts = struct
     haste_paths_blacklist: string list;
     haste_paths_whitelist: string list;
     haste_use_name_reducers: bool;
+    ignore_type_in_value_position: bool;
     ignore_non_literal_requires: bool;
     module_system: Options.module_system;
     module_name_mappers: (Str.regexp * string) list;
@@ -155,6 +156,7 @@ module Opts = struct
     haste_paths_blacklist = ["\\(.*\\)?/node_modules/.*"];
     haste_paths_whitelist = ["<PROJECT_ROOT>/.*"];
     haste_use_name_reducers = false;
+    ignore_type_in_value_position = false;
     ignore_non_literal_requires = false;
     module_system = Options.Node;
     module_name_mappers = [];
@@ -527,6 +529,15 @@ let parse_options config lines =
       optparser = optparse_uint;
       setter = (fun opts v ->
         Ok {opts with max_header_tokens = v;}
+      );
+    }
+
+    |> define_opt "ignore_type_in_value_position" {
+      initializer_ = USE_DEFAULT;
+      flags = [];
+      optparser = optparse_boolean;
+      setter = (fun opts v ->
+        Ok {opts with ignore_type_in_value_position = v;}
       );
     }
 

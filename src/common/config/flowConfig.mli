@@ -24,6 +24,7 @@ module Opts : sig
     haste_paths_blacklist: string list;
     haste_paths_whitelist: string list;
     haste_use_name_reducers: bool;
+    ignore_type_in_value_position: bool;
     ignore_non_literal_requires: bool;
     module_system: Options.module_system;
     module_name_mappers: (Str.regexp * string) list;

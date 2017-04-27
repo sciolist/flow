@@ -223,6 +223,9 @@ let make_options ~root ~strip_root ~ignore_flag ~include_flag =
     );
     opt_haste_use_name_reducers = FlowConfig.(
       flowconfig.options.Opts.haste_use_name_reducers
+    );
+    opt_ignore_type_in_value_position = FlowConfig.(
+      flowconfig.options.Opts.ignore_type_in_value_position
     )
   }
 

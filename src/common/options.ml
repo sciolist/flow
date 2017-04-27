@@ -57,6 +57,7 @@ type t = {
   opt_haste_paths_blacklist: string list;
   opt_haste_paths_whitelist: string list;
   opt_haste_use_name_reducers: bool;
+  opt_ignore_type_in_value_position: bool;
   opt_ignore_non_literal_requires: bool;
   opt_ignores: (string * Str.regexp) list;
   opt_includes: Path_matcher.t;
@@ -139,6 +140,8 @@ let node_resolver_dirnames opts = opts.opt_node_resolver_dirnames
 let output_graphml opts = opts.opt_output_graphml
 let root opts = opts.opt_root
 let facebook_fbt opts = opts.opt_facebook_fbt
+let ignore_type_in_value_position opts =
+  opts.opt_ignore_type_in_value_position
 let should_ignore_non_literal_requires opts =
   opts.opt_ignore_non_literal_requires
 let should_munge_underscores opts = opts.opt_munge_underscores
